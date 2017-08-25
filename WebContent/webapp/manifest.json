@@ -4,7 +4,7 @@
 		"_version": "1.3.0",
 		"id": "eventsspy.indexroot",
 		"type": "application",
-        "i18n": "i18n/i18n.properties",
+		"i18n": "i18n/i18n.properties",
 		"title": "{{appTitle}}",
 		"description": "{{appDescription}}",
 		"applicationVersion": {
@@ -30,7 +30,7 @@
 			"type": "XML",
 			"id": "app"
 		},
-        "handleValidation": true,
+		"handleValidation": true,
 		"autoPrefixId": true,
 		"dependencies": {
 			"minUI5Version": "1.34",
@@ -46,53 +46,63 @@
 				}
 			}
 		},
-        "models": {
-            "i18n": {
+		"models": {
+			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
 					"bundleName": "eventsspy.indexroot.i18n.i18n"
 				}
-            }
+			}
 		},
-        "routing": {
-		    "config" : {
-		        "routerClass" : "sap.m.routing.Router",
-		        "viewType" : "XML",
-		        "viewPath" : "eventsspy.indexroot.view",
-		        "controlId" : "app",
-		        "controlAggregation" : "pages",
-		        "async" : true
-		    },
-		    "routes" : [
-		        {
-		            "pattern" : "",
-		            "name" : "login",
-		            "target" : "Login"
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "eventsspy.indexroot.view",
+				"controlId": "app",
+				"controlAggregation": "pages",
+				"async": true
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "login",
+					"target": "Login"
 		        },
-		        {
-		            "pattern" : "homeScreen",
-		            "name" : "homeScreen",
-		            "target" : "HomeScreen"
+				{
+					"pattern": "homeScreen",
+					"name": "homeScreen",
+					"target": "HomeScreen"
+		        },
+				{
+					"pattern": "createEventScreen",
+					"name": "createEventScreen",
+					"target": "CreateEventScreen"
 		        }
             ],
-		        "targets" : {
-		            "Login" : {
-		                "viewName" : "LoginScreen",
-		                "viewId" : "login",
-		                "viewLevel" : 1
-		            },
-		            "HomeScreen" : {
-		                "viewName" : "HomeScreen",
-		                "viewId" : "homeScreen",
-		                "viewLevel" : 2
-		            }
-		        }
+			"targets": {
+				"Login": {
+					"viewName": "LoginScreen",
+					"viewId": "login",
+					"viewLevel": 1
+				},
+				"HomeScreen": {
+					"viewName": "HomeScreen",
+					"viewId": "homeScreen",
+					"viewLevel": 2
+				},
+				"CreateEventScreen": {
+					"viewName": "CreateEventScreen",
+					"viewId": "createEventScreen",
+					"viewLevel": 3
+				}
+			}
 		},
 		"contentDensities": {
 			"compact": true,
 			"cozy": true
 		},
-        "resources": {
+		"resources": {
 			"css": [{
 				"uri": "css/style.css"
 			}]
