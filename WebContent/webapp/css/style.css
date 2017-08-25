@@ -1,0 +1,26 @@
+/* Enter your custom styles here */
+
+
+#panel1
+{
+    width: 23%;
+}
+
+.LPadding40
+{
+	padding-left: 40px;
+}
+
+.LPadding30
+{
+	padding-left: 30%;
+}
+
+.LPadding10
+{
+	padding-left: 10%;
+}
+
+.MaringL40{
+    margin-left: 40%;
+}

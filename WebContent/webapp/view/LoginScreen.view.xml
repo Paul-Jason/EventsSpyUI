@@ -1,0 +1,41 @@
+<mvc:View
+	xmlns:f="sap.ui.layout.form"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+	controllerName="eventsspy.indexroot.controller.LoginScreen" displayBlock="true">
+    <html:style>
+        #panel1 {
+            margin-left: 40%;
+        }
+    </html:style>
+	<App>
+		<pages>
+			<Page title="Event Spy">
+				<content>
+					<Panel id="panel1" width="23%" class="MaringL40" backgroundDesign="Solid">
+						<f:SimpleForm
+							 editable="true" layout="ResponsiveGridLayout" id="signinform">
+							<core:Title text="Sign In"/>
+							<VBox width="100%" direction="Column" id="vbox1">
+								<items>
+									<Label text="Username" id="username" required="true"/>
+									<Input width="100%" id="username_" required="true" class="sapUiSmallMarginBottom" type="Text" placeholder="Enter username" valueStateText="Username must not be empty." value="{path : '/name',type : 'sap.ui.model.type.String', constraints : {minLength: 1, maxLength: 10}}" />
+									<Label text="Password" id="password" required="true"/>
+									<Input width="100%" id="password_" required="true" type="Password" class="sapUiSmallMarginBottom" placeholder="Enter password" valueStateText="Password must not be empty."/>
+								</items>
+							</VBox>
+							<HBox width="100%" id="hbox1">
+								<items>
+									<Button text="Login" id="login" class="sapUiSmallMarginTop sapUiMediumMarginBegin" type="Navigation" press="onPressLogin" />
+									<Button text="Register" id="register" class="sapUiSmallMarginTop sapUiSmallMarginBegin" type="Emphasized" press="onPressRegisterForm"/>
+								</items>
+							</HBox>
+						</f:SimpleForm>
+					</Panel>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

@@ -1,0 +1,133 @@
+<mvc:View
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+    controllerName="eventsspy.indexroot.controller.HomeScreen"
+    displayBlock="true">
+	<App>
+		<pages>
+			<Page title="Event Spy">
+				<content>
+					<IconTabBar
+                        id="idIconTabBar"
+                        select="handleIconTabBarSelect"
+                        class="sapUiResponsiveContentPadding">
+						<items>
+							<IconTabFilter
+                                icon="sap-icon://home"
+                                iconColor="Neutral"
+                                text="Home"
+                                key="Home" >
+								<Panel class="sapUiResponsiveMargin" width="auto">
+									<content>
+										<List headerText="Your Events" items="{products>/Products}">
+											<items>
+												<CustomListItem type="Navigation">
+													<HBox fitContainer="true" justifyContent="Start">
+														<HBox width="100px" justifyContent="Center">
+															<core:Icon
+
+                                                                              src="sap-icon://activity-2"
+
+                                                                              size="2em"
+
+                                                                              class="custAlign" />
+														</HBox>
+														<VBox width="90%" justifyContent="Center">
+															<Label
+
+                                                                              text="{name}"
+
+                                                                              class="custAlign" />
+														</VBox>
+														<HBox width="100px" justifyContent="Center">
+															<core:Icon
+
+                                                                              src="sap-icon://action-settings"
+
+                                                                              size="2em"
+
+                                                                              class="custAlign"
+
+                                                                              press="handlePress"/>
+														</HBox>
+													</HBox>
+												</CustomListItem>
+											</items>
+										</List>
+									</content>
+								</Panel>
+							</IconTabFilter>
+							<IconTabSeparator />
+							<IconTabFilter
+                                icon="sap-icon://customer"
+                                iconColor="Neutral"
+                                count="{/ProductCollectionStats/Counts/Weight/Ok}"
+                                text="My Events"
+                                key="My">
+								<Toolbar class="sapUiResponsiveContentPadding">
+									<ToolbarSpacer/>
+									<Button type="Emphasized" text="Create new event" press="onClickCreateNewEvent"/>
+									<SearchField liveChange="onSearch" width="18%"/>
+								</Toolbar>
+								<Table id="myEventsTableId" items="{
+                                                                   path:'EventsModel>/d/results'
+                                                                   }">
+									<headerToolbar>
+										<Toolbar>
+											<Title text="My Events"/>
+										</Toolbar>
+									</headerToolbar>
+									<columns>
+										<Column >
+											<Text text="Title"/>
+										</Column>
+										<Column >
+											<Text text="Description"/>
+										</Column>
+										<Column >
+											<Text text="Date"/>
+										</Column>
+										<Column >
+											<Text text="Actions"/>
+										</Column>
+									</columns>
+									<items >
+										<ColumnListItem type="Navigation">
+											<cells>
+												<Text text="{EventsModel>TITLE}"/>
+											</cells>
+											<cells>
+												<Text text="{EventsModel>DESCRIPTION}"/>
+											</cells>
+											<cells>
+												<Text text="{path: 'EventsModel>DATE_TIME', formatter: '.formatter.formatJSONDateTime'}"/>
+											</cells>
+											<cells>
+												<HBox>
+													<Button icon="sap-icon://delete"  iconColor="Critical"/>
+												</HBox>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+							</IconTabFilter>
+							<IconTabFilter
+                                icon="sap-icon://filter"
+                                iconColor="Neutral"
+                                count="{/ProductCollectionStats/Counts/Weight/Heavy}"
+                                text="Registered Events"
+                                key="Registered" />
+							<IconTabFilter
+                                icon="sap-icon://add-contact"
+                                iconColor="Neutral"
+                                count="{/ProductCollectionStats/Counts/Weight/Overweight}"
+                                text="Event Invites"
+                                key="Invites" />
+						</items>
+					</IconTabBar>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
