@@ -5,7 +5,8 @@ sap.ui.define([
             function(jQuery, Controller, JSONModel){
 					"use strict";
                     
-    
+                    var oModelLogin = new JSONModel();
+                    
 					Controller.extend("eventsspy.indexroot.controller.LoginScreen",{
 							
                         onInit: function() {
@@ -20,6 +21,7 @@ sap.ui.define([
 				            var password = this.getView().byId("ipassword").getValue();
 				            var uid;
 				            var query1 ="https://hanai329046trial.hanatrial.ondemand.com/EventsSpyUI/services/Login.xsjs?acmd=validate";
+                            
             			    $.ajax({
             					url: query1,
             					type: "GET",
@@ -34,10 +36,19 @@ sap.ui.define([
             						console.log("response for authenticate user : ");
             						console.log(data);
             						if(data.results.length !== 0){
+            						    uid = data.results[0].UserId;
             						    oRouter.navTo("homeScreen");
             						}
             					}
             				});
+            				var userData = {
+                					username: username,
+                					uid: uid
+                				};
+                			console.log("userData");
+                            console.log(userData);
+            				oModelLogin.setData(userData);
+            				sap.ui.getCore().setModel(oModelLogin, "loggedInUserData");
 			                
 			                
                         }

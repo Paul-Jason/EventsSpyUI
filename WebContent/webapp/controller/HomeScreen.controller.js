@@ -10,16 +10,23 @@ sap.ui.define([
 					Controller.extend("eventsspy.indexroot.controller.HomeScreen",{
 						formatter : formatter,	
                         onInit: function() {
+                               var userDataModel = sap.ui.getCore().getModel("loggedInUserData");
+                               var userid = userDataModel.getData().uid;
+                               console.log(userid);
                                this.getView().setModel(oModelEvents, "EventsModel");
                                var view = this.getView();
-                               var query1 = "https://hanai329046trial.hanatrial.ondemand.com/EventsSpyUI/services/EventsSpyOdata.xsodata/ALL_EVENTS_LIST?$format=json";
+                               var query = "https://hanai329046trial.hanatrial.ondemand.com/EventsSpyUI/services/MyEvents.xsjs?acmd=listMyEvents";
                                 $.ajax({
-                                    url: query1,
+                                    url: query,
                                     type: "GET",
-                                    data: "json",
+                                    data: {
+            					        userid: userid
+            					    },
+            					    datatype: 'json',
                                     async: false,
                                     success: function(oData) {
-                                        oModelEvents.setData(oData);
+                                        var data = $.parseJSON(oData);   
+                                        oModelEvents.setData(data);
                                         console.log("Response for all the events created:");
                                         console.log(oData);
                                         view.setModel(oModelEvents);
