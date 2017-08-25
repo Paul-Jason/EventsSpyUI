@@ -21,9 +21,9 @@
 							<VBox width="100%" direction="Column" id="vbox1">
 								<items>
 									<Label text="Username" id="username" required="true"/>
-									<Input width="100%" id="username_" required="true" class="sapUiSmallMarginBottom" type="Text" placeholder="Enter username" valueStateText="Username must not be empty." value="{path : '/name',type : 'sap.ui.model.type.String', constraints : {minLength: 1, maxLength: 10}}" />
+									<Input width="100%" id="iusername" required="true" class="sapUiSmallMarginBottom" type="Text" placeholder="Enter username" valueStateText="Username must not be empty." value="{path : '/name',type : 'sap.ui.model.type.String', constraints : {minLength: 1, maxLength: 10}}" />
 									<Label text="Password" id="password" required="true"/>
-									<Input width="100%" id="password_" required="true" type="Password" class="sapUiSmallMarginBottom" placeholder="Enter password" valueStateText="Password must not be empty."/>
+									<Input width="100%" id="ipassword" required="true" type="Password" class="sapUiSmallMarginBottom" placeholder="Enter password" valueStateText="Password must not be empty."/>
 								</items>
 							</VBox>
 							<HBox width="100%" id="hbox1">

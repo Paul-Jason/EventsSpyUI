@@ -20,7 +20,8 @@ sap.ui.define([
                                     async: false,
                                     success: function(oData) {
                                         oModelEvents.setData(oData);
-                                        console.log(oModelEvents);
+                                        console.log("Response for all the events created:");
+                                        console.log(oData);
                                         view.setModel(oModelEvents);
                                     }
                                 });                     	    
