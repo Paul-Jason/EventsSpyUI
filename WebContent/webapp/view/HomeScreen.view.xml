@@ -71,7 +71,7 @@
 									<SearchField liveChange="onSearch" width="18%"/>
 								</Toolbar>
 								<Table id="myEventsTableId" items="{
-                                                                   path:'EventsModel>/d/results'
+                                                                   path:'EventsModel>/results'
                                                                    }">
 									<headerToolbar>
 										<Toolbar>
@@ -86,7 +86,13 @@
 											<Text text="Description"/>
 										</Column>
 										<Column >
-											<Text text="Date"/>
+											<Text text="LOB"/>
+										</Column>
+										<Column >
+											<Text text="Capacity"/>
+										</Column>
+										<Column >
+											<Text text="Registered Count"/>
 										</Column>
 										<Column >
 											<Text text="Actions"/>
@@ -101,7 +107,13 @@
 												<Text text="{EventsModel>DESCRIPTION}"/>
 											</cells>
 											<cells>
-												<Text text="{path: 'EventsModel>DATE_TIME', formatter: '.formatter.formatJSONDateTime'}"/>
+												<Text text="{EventsModel>FOR_LOB}"/>
+											</cells>
+											<cells>
+												<Text text="{EventsModel>CAPACITY}"/>
+											</cells>
+											<cells>
+												<Text text="{EventsModel>REGISTERED_NUMBER}"/>
 											</cells>
 											<cells>
 												<HBox>
@@ -121,9 +133,69 @@
 							<IconTabFilter
                                 icon="sap-icon://add-contact"
                                 iconColor="Neutral"
-                                count="{/ProductCollectionStats/Counts/Weight/Overweight}"
                                 text="Event Invites"
-                                key="Invites" />
+                                key="Invites">
+                                <Table id="eventInvitesTableId" items="{
+                                                                   path:'EventInvitesModel>/results'
+                                                                   }">
+									<headerToolbar>
+										<Toolbar>
+											<Title text="Event Invites"/>
+										</Toolbar>
+									</headerToolbar>
+									<columns>
+										<Column >
+											<Text text="Title"/>
+										</Column>
+										<Column >
+											<Text text="Description"/>
+										</Column>
+										<Column >
+											<Text text="LOB"/>
+										</Column>
+										<Column >
+											<Text text="Capacity"/>
+										</Column>
+										<Column >
+											<Text text="Registered Count"/>
+										</Column>
+										<Column >
+											<Text text="Waitlist"/>
+										</Column>
+										<Column >
+											<Text text="Actions"/>
+										</Column>
+									</columns>
+									<items >
+										<ColumnListItem type="Navigation">
+											<cells>
+												<Text text="{EventInvitesModel>TITLE}"/>
+											</cells>
+											<cells>
+												<Text text="{EventInvitesModel>DESCRIPTION}"/>
+											</cells>
+											<cells>
+												<Text text="{EventInvitesModel>FOR_LOB}"/>
+											</cells>
+											<cells>
+												<Text text="{EventInvitesModel>CAPACITY}"/>
+											</cells>
+											<cells>
+												<Text text="{EventInvitesModel>REGISTERED_NUMBER}"/>
+											</cells>
+											<cells>
+												<Text text="{EventInvitesModel>CURRENT_WAITLIST}"/>
+											</cells>
+											<cells>
+												<HBox>
+													<Button icon="sap-icon://accept"  iconColor="Positive"/>
+													<Button icon="sap-icon://decline"  iconColor="Negative"/>
+												</HBox>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+                            </IconTabFilter>
 						</items>
 					</IconTabBar>
 				</content>

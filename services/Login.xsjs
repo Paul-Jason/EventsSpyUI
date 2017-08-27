@@ -10,7 +10,7 @@ function authenticateUser(){
     var connection = $.db.getConnection();
     var statement = null;
     var resultSet = null;
-    var validateQuery = 'SELECT * FROM \"HANA_SCHEMA\".\"EVENTS_USER\" AS \"EVENTS_USER\" WHERE \"EVENTS_USER\".\"USERNAME\" = ? AND \"EVENTS_USER\".\"PASSWORD\" = ?;';
+    var validateQuery = 'SELECT * FROM \"HanaSchema::AT_ENTIRE_USER_DATA\" AS \"USER_DATA\" WHERE \"USER_DATA\".\"USERNAME\"=? AND \"USER_DATA\".\"PASSWORD\"=?;';
     try {
 		statement = connection.prepareStatement(validateQuery);
 		statement.setString(1, username);
@@ -22,7 +22,10 @@ function authenticateUser(){
         	do{
         		 var record = {};
         		 record.UserId = resultSet.getString(1);
-        		 record.UserName = resultSet.getString(2);
+        		 record.TeamId = resultSet.getString(2);
+        		 record.UserName = resultSet.getString(3);
+        		 record.Team = resultSet.getString(5);
+        		 record.LOB = resultSet.getString(6);
         		 txlist.results.push(record);
         	  }while(resultSet.next())
         	}
