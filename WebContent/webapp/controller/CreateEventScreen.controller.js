@@ -8,7 +8,7 @@ sap.ui.define([
 		Controller.extend("eventsspy.indexroot.controller.CreateEventScreen", {
 			onInit: function() {
 				var view = this.getView();
-				var query = "https://hanai329046trial.hanatrial.ondemand.com/EventsSpyUI/services/MyEvents.xsjs?acmd=listLOB";
+				var query = "https://hanadbi329046trial.hanatrial.ondemand.com/EventsSpyUI/services/MyEvents.xsjs?acmd=listLOB";
 				$.ajax({
 					url: query,
 					type: "GET",
@@ -32,27 +32,33 @@ sap.ui.define([
 				var userDataModel = sap.ui.getCore().getModel("loggedInUserData");
 				var userid = userDataModel.getData().uid;
 				var title = this.getView().byId("iTitle").getValue();
+				//title = title.toString();
 				var description = this.getView().byId("iDescription").getValue();
-				var lob = this.getView().byId("iLOB").getSelectedKey();
-				lob = lob.toString();
-				var date = this.getView().byId("iDate").getValue();
-				var time = this.getView().byId("iTime").getValue();
+				//description = description.toString();
+				var lobId = this.getView().byId("iLOB").getSelectedKey();
+				var dateTime = this.getView().byId("iDateTime").getValue();
+				//dateTime = dateTime.toString();
 				var capacity = this.getView().byId("iCapacity").getValue();
 				console.log(userid);
 				console.log(title);
 				console.log(description);
-				console.log(lob);
-				console.log(date);
-				console.log(time);
+				console.log(lobId);
+				console.log(dateTime);
 				console.log(capacity);
-				var dateTime = date + " " + time;
-				var query = "https://hanai329046trial.hanatrial.ondemand.com/EventsSpyUI/services/MyEvents.xsjs?acmd=createEvent&userid=" + userid +
-					"&title=" + title + "&description= " + description + "&lob=" + lob + "&dateTime=" + dateTime + "&capacity=" + capacity;
+				var query = "https://hanadbi329046trial.hanatrial.ondemand.com/EventsSpyUI/services/MyEvents.xsjs?acmd=createEvent";
 				console.log(query);
 				$.ajax({
 					url: query,
 					type: "GET",
-					data: 'json',
+					data: {
+					    userid: userid,
+					    title: title,
+					    description: description,
+					    lobId: lobId,
+					    // dateTime: dateTime,
+					    capacity: capacity
+					},
+					dataType: 'json',
 					async: false,
 					success: function(oData) {
 						var data = $.parseJSON(oData);

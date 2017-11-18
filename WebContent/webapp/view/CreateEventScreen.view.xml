@@ -43,11 +43,11 @@
 								<Label text="Description" />
 								<TextArea id="iDescription" />
 								<Label text="LOB" />
-								<Select id="iLOB" selectedKey="{Country}">
+								<Select id="iLOB" items="{
+                                                            path:'lobOdata>/results'
+                                                         }">
 									<items>
-										<core:Item text="England" key="England"/>
-										<core:Item text="Germany" key="Germany"/>
-										<core:Item text="USA" key="USA"/>
+										<core:Item text="{lobOdata>LOB}" key="{lobOdata>LOBId}"/>
 									</items>
 								</Select>
 								<Label text="Date and Time" />
