@@ -26,7 +26,6 @@ sap.ui.define([
 			goBackToHome: function() {
 				var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
 				oRouter.navTo("homeScreen");
-				
 			},
 			createANewEvent: function() {
 				var userDataModel = sap.ui.getCore().getModel("loggedInUserData");
@@ -63,6 +62,8 @@ sap.ui.define([
 					success: function(oData) {
 						var data = $.parseJSON(oData);
 						console.log(data);
+						var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
+						oRouter.navTo("homeScreen");
 					}
 				});
 			}
