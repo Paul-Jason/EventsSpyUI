@@ -9,7 +9,7 @@ function getMyEvents(){
     var connection = $.db.getConnection();
     var statement = null;
     var resultSet = null;
-    var getListQuery = 'SELECT * FROM \"HanaSchema::AT_USER_CREATED_EVENTS\" AS \"EVENTS_USER\" WHERE \"EVENTS_USER\".\"USER_ID\" = ?;';
+    var getListQuery = 'SELECT * FROM \"EventsSpyUI.DbViews::AT_MY_CREATED_EVENTS\" AS \"EVENTS_USER\" WHERE \"EVENTS_USER\".\"USER_ID\" = ?;';
     try {
 		statement = connection.prepareStatement(getListQuery);
 		statement.setString(1, userid);
@@ -21,13 +21,14 @@ function getMyEvents(){
         		 var record = {};
         		 record.USER_ID = resultSet.getString(1);
         		 record.EVENT_ID = resultSet.getString(2);
-        		 record.TITLE = resultSet.getString(4);
-        		 record.DESCRIPTION = resultSet.getString(5);
-        		 record.FOR_LOB = resultSet.getString(7);
-        		 record.DATE_TIME = resultSet.getString(8);
-        		 record.CAPACITY = resultSet.getString(9);
-        		 record.CURRENT_WAITLIST = resultSet.getString(10);
-        		 record.REGISTERED_NUMBER = resultSet.getString(11);
+        		 record.TITLE = resultSet.getString(3);
+        		 record.DESCRIPTION = resultSet.getString(4);
+        		 record.FOR_LOB_ID = resultSet.getString(5);
+        		 record.FOR_LOB = resultSet.getString(6);
+        		 record.DATE_TIME = resultSet.getString(7);
+        		 record.CAPACITY = resultSet.getString(8);
+        		 record.CURRENT_WAITLIST = resultSet.getString(9);
+        		 record.REGISTERED_NUMBER = resultSet.getString(10);
         		 txlist.results.push(record);
         	  }while(resultSet.next())
         	}
@@ -47,7 +48,7 @@ function getLOBList(){
     var connection = $.db.getConnection();
     var statement = null;
     var resultSet = null;
-    var getListQuery = 'SELECT \"TEAM_INFO\".\"LOB\" FROM \"HANA_SCHEMA\".\"TEAM_INFO\" AS \"TEAM_INFO\";';
+    var getListQuery = 'SELECT * FROM \"ACME\".\"LOB_INFO\" AS \"LOB_INFO\";';
     try {
 		statement = connection.prepareStatement(getListQuery);
 		resultSet = statement.executeQuery();
@@ -56,6 +57,7 @@ function getLOBList(){
 		if(logonStatus){
         	do{
         		 var record = {};
+        		 record.LOBId = resultSet.getString(1);
         		 record.LOB = resultSet.getString(1);
         		 txlist.results.push(record);
         	  }while(resultSet.next())
@@ -81,9 +83,9 @@ function createEvent(){
     var lob = $.request.parameters.get("lob");
     var dataTime = $.request.parameters.get("dataTime");
     var capacity = $.request.parameters.get("capacity");
-    var getEventIDQuery = 'SELECT COUNT(*) FROM \"HANA_SCHEMA\".\"CREATED_EVENTS\";';
-    var getListQuery = 'INSERT INTO \"HANA_SCHEMA\".\"CREATED_EVENTS\" VALUES(?,?,?,NULL,?,?,?,0,0);';
-    var userCreatedEventQuery = 'INSERT INTO \"HANA_SCHEMA\".\"USER_CREATED_EVENTS\" VALUES(?,?);';
+    var getEventIDQuery = 'SELECT COUNT(*) FROM \"ACME".\"CREATED_EVENTS\";';
+    var getListQuery = 'INSERT INTO \"ACME\".\"CREATED_EVENTS\" VALUES(?,?,?,NULL,?,?,?,0,0);';
+    var userCreatedEventQuery = 'INSERT INTO \"ACME\".\"USER_CREATED_EVENTS\" VALUES(?,?);';
     try {
 		statement = connection.prepareStatement(getEventIDQuery);
 		resultSet = statement.executeQuery();

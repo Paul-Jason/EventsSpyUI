@@ -20,7 +20,7 @@ sap.ui.define([
 				            var username = this.getView().byId("iusername").getValue();
 				            var password = this.getView().byId("ipassword").getValue();
 				            var uid;
-				            var query1 ="https://hanai329046trial.hanatrial.ondemand.com/EventsSpyUI/services/Login.xsjs?acmd=validate";
+				            var query1 ="https://hanadbi329046trial.hanatrial.ondemand.com/EventsSpyUI/services/Login.xsjs?acmd=validate";
                             
             			    $.ajax({
             					url: query1,

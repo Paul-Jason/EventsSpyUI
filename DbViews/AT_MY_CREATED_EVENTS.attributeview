@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Dimension:dimension xmlns:Dimension="http://www.sap.com/ndb/BiModelDimension.ecore" schemaVersion="1.2" id="AT_MY_CREATED_EVENTS" applyPrivilegeType="ANALYTIC_PRIVILEGE" checkAnalyticPrivileges="true" defaultClient="$$client$$" defaultLanguage="$$language$$" hierarchiesSQLEnabled="false" translationRelevant="true" visibility="internal" dimensionType="Standard">
+  <origin/>
+  <descriptions defaultDescription="AT_MY_CREATED_EVENTS"/>
+  <metadata changedAt="2017-11-18 13:21:33.769"/>
+  <informationModelLayout relativeWidthScenario="27"/>
+  <attributes>
+    <attribute id="USER_ID" key="true" order="1" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="USER_ID"/>
+      <keyMapping schemaName="ACME" columnObjectName="USER_CREATED_EVENTS" columnName="USER_ID"/>
+    </attribute>
+    <attribute id="EVENT_ID_1" key="true" order="2" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="EVENT_ID_1"/>
+      <keyMapping schemaName="ACME" columnObjectName="USER_CREATED_EVENTS" columnName="EVENT_ID"/>
+    </attribute>
+    <attribute id="TITLE" order="3" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="TITLE"/>
+      <keyMapping schemaName="ACME" columnObjectName="CREATED_EVENTS" columnName="TITLE"/>
+    </attribute>
+    <attribute id="DESCRIPTION" order="4" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="DESCRIPTION"/>
+      <keyMapping schemaName="ACME" columnObjectName="CREATED_EVENTS" columnName="DESCRIPTION"/>
+    </attribute>
+    <attribute id="FOR_LOB_ID" order="5" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="FOR_LOB_ID"/>
+      <keyMapping schemaName="ACME" columnObjectName="CREATED_EVENTS" columnName="FOR_LOB_ID"/>
+    </attribute>
+    <attribute id="FOR_LOB" order="6" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="FOR_LOB"/>
+      <keyMapping schemaName="ACME" columnObjectName="CREATED_EVENTS" columnName="FOR_LOB"/>
+    </attribute>
+    <attribute id="DATE_TIME" order="7" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="DATE_TIME"/>
+      <keyMapping schemaName="ACME" columnObjectName="CREATED_EVENTS" columnName="DATE_TIME"/>
+    </attribute>
+    <attribute id="CAPACITY" order="8" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="CAPACITY"/>
+      <keyMapping schemaName="ACME" columnObjectName="CREATED_EVENTS" columnName="CAPACITY"/>
+    </attribute>
+    <attribute id="CURRENT_WAITLIST" order="9" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="CURRENT_WAITLIST"/>
+      <keyMapping schemaName="ACME" columnObjectName="CREATED_EVENTS" columnName="CURRENT_WAITLIST"/>
+    </attribute>
+    <attribute id="REGISTERED_NUMBER" order="10" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="REGISTERED_NUMBER"/>
+      <keyMapping schemaName="ACME" columnObjectName="CREATED_EVENTS" columnName="REGISTERED_NUMBER"/>
+    </attribute>
+    <attribute id="EVENT_ID" hidden="true" order="11" attributeHierarchyActive="false" displayAttribute="false">
+      <descriptions defaultDescription="EVENT_ID"/>
+      <keyMapping schemaName="ACME" columnObjectName="CREATED_EVENTS" columnName="EVENT_ID"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <privateDataFoundation>
+    <tableProxies>
+      <tableProxy>
+        <table schemaName="ACME" columnObjectName="USER_CREATED_EVENTS"/>
+      </tableProxy>
+      <tableProxy>
+        <table schemaName="ACME" columnObjectName="CREATED_EVENTS"/>
+      </tableProxy>
+    </tableProxies>
+    <joins>
+      <join>
+        <leftTable schemaName="ACME" columnObjectName="USER_CREATED_EVENTS"/>
+        <rightTable schemaName="ACME" columnObjectName="CREATED_EVENTS"/>
+        <leftColumns>
+          <columnName>EVENT_ID</columnName>
+        </leftColumns>
+        <rightColumns>
+          <columnName>EVENT_ID</columnName>
+        </rightColumns>
+        <properties joinOperator="Equal" joinType="referential"/>
+      </join>
+    </joins>
+    <layout>
+      <shapes>
+        <shape modelObjectName="USER_CREATED_EVENTS" modelObjectNameSpace="ACME" modelObjectType="catalog">
+          <upperLeftCorner x="138" y="126"/>
+        </shape>
+        <shape modelObjectName="CREATED_EVENTS" modelObjectNameSpace="ACME" modelObjectType="catalog">
+          <upperLeftCorner x="534" y="152"/>
+        </shape>
+        <shape modelObjectName="DataFoundation" modelObjectNameSpace="DataFoundation" modelObjectType="repository">
+          <upperLeftCorner x="40" y="85"/>
+          <rectangleSize height="0" width="0"/>
+        </shape>
+      </shapes>
+    </layout>
+  </privateDataFoundation>
+  <hierarchies/>
+</Dimension:dimension>

@@ -18,7 +18,7 @@ sap.ui.define([
                                sap.ui.getCore().setModel(oModelEvents, "EventsModel");
                                this.getView().setModel(oModelEvents, "EventsModel");
                                var view = this.getView();
-                               var query = "https://hanai329046trial.hanatrial.ondemand.com/EventsSpyUI/services/MyEvents.xsjs?acmd=listMyEvents";
+                               var query = "https://hanadbi329046trial.hanatrial.ondemand.com/EventsSpyUI/services/MyEvents.xsjs?acmd=listMyEvents";
                                 $.ajax({
                                     url: query,
                                     type: "GET",
