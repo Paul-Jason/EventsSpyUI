@@ -152,7 +152,7 @@ function deleteEvent(){
     
     var deleteUserEventQuery = 'DELETE FROM \"ACME\".\"USER_CREATED_EVENTS\" AS \"USER_EVENTS\" WHERE \"USER_EVENTS\".\"USER_ID\"=? AND \"USER_EVENTS\".\"EVENT_ID\"=?;';
     var deleteEventQuery = 'DELETE FROM \"ACME\".\"CREATED_EVENTS\" AS \"USER_EVENTS\" WHERE \"USER_EVENTS\".\"EVENT_ID\"=?;';
-    
+    var deleteEventInviteQuery = 'DELETE FROM \"ACME\".\"USER_REGISTERED_EVENTS_WITH_STATUS\" AS \"USER_EVENTS\" WHERE \"USER_EVENTS\".\"USER_ID\"=? AND \"USER_EVENTS\".\"EVENT_ID\"=?;';
     try {
 		statement = connection.prepareStatement(deleteUserEventQuery);
 		statement.setString(1, userid);
@@ -161,6 +161,11 @@ function deleteEvent(){
 		connection.commit();
 		statement = connection.prepareStatement(deleteEventQuery);
 		statement.setString(1, eventId);
+		resultSet = statement.executeUpdate();
+		connection.commit();
+		statement = connection.prepareStatement(deleteEventInviteQuery);
+		statement.setString(1, userid);
+		statement.setString(2, eventId);
 		resultSet = statement.executeUpdate();
 		connection.commit();
 	} finally {

@@ -14,52 +14,6 @@
                         class="sapUiResponsiveContentPadding">
 						<items>
 							<IconTabFilter
-                                icon="sap-icon://home"
-                                iconColor="Neutral"
-                                text="Home"
-                                key="Home" >
-								<Panel class="sapUiResponsiveMargin" width="auto">
-									<content>
-										<List headerText="Your Events" items="{products>/Products}">
-											<items>
-												<CustomListItem type="Navigation">
-													<HBox fitContainer="true" justifyContent="Start">
-														<HBox width="100px" justifyContent="Center">
-															<core:Icon
-
-                                                                              src="sap-icon://activity-2"
-
-                                                                              size="2em"
-
-                                                                              class="custAlign" />
-														</HBox>
-														<VBox width="90%" justifyContent="Center">
-															<Label
-
-                                                                              text="{name}"
-
-                                                                              class="custAlign" />
-														</VBox>
-														<HBox width="100px" justifyContent="Center">
-															<core:Icon
-
-                                                                              src="sap-icon://action-settings"
-
-                                                                              size="2em"
-
-                                                                              class="custAlign"
-
-                                                                              press="handlePress"/>
-														</HBox>
-													</HBox>
-												</CustomListItem>
-											</items>
-										</List>
-									</content>
-								</Panel>
-							</IconTabFilter>
-							<IconTabSeparator />
-							<IconTabFilter
                                 icon="sap-icon://customer"
                                 iconColor="Neutral"
                                 count="{/ProductCollectionStats/Counts/Weight/Ok}"
@@ -68,6 +22,7 @@
 								<Toolbar class="sapUiResponsiveContentPadding">
 									<ToolbarSpacer/>
 									<Button type="Emphasized" text="Create new event" press="onClickCreateNewEvent"/>
+									<Button type="Emphasized" text="Logout" press="onLogout"/>
 									<SearchField liveChange="onSearch" width="18%"/>
 								</Toolbar>
 								<Table id="myEventsTableId" items="{
@@ -124,12 +79,64 @@
 									</items>
 								</Table>
 							</IconTabFilter>
+							<IconTabSeparator />
 							<IconTabFilter
                                 icon="sap-icon://filter"
                                 iconColor="Neutral"
                                 count="{/ProductCollectionStats/Counts/Weight/Heavy}"
                                 text="Registered Events"
-                                key="Registered" />
+                                key="Registered" >
+								<Toolbar class="sapUiResponsiveContentPadding">
+									<ToolbarSpacer/>
+									<Button type="Emphasized" text="Create new event" press="onClickCreateNewEvent"/>
+									<SearchField liveChange="onSearch" width="18%"/>
+								</Toolbar>
+								<Table id="myEventsTableId1" items="{
+                                                                   path:'AcceptedEventInvitesModel>/results'
+                                                                   }">
+									<headerToolbar>
+										<Toolbar>
+											<Title text="Events Accepted"/>
+										</Toolbar>
+									</headerToolbar>
+									<columns>
+										<Column >
+											<Text text="Title"/>
+										</Column>
+										<Column >
+											<Text text="Description"/>
+										</Column>
+										<Column >
+											<Text text="LOB"/>
+										</Column>
+										<Column >
+											<Text text="Capacity"/>
+										</Column>
+										<Column >
+											<Text text="Registered Count"/>
+										</Column>
+									</columns>
+									<items >
+										<ColumnListItem type="Navigation">
+											<cells>
+												<Text text="{AcceptedEventInvitesModel>TITLE}"/>
+											</cells>
+											<cells>
+												<Text text="{AcceptedEventInvitesModel>DESCRIPTION}"/>
+											</cells>
+											<cells>
+												<Text text="{AcceptedEventInvitesModel>FOR_LOB}"/>
+											</cells>
+											<cells>
+												<Text text="{AcceptedEventInvitesModel>CAPACITY}"/>
+											</cells>
+											<cells>
+												<Text text="{AcceptedEventInvitesModel>REGISTERED_NUMBER}"/>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>
+							</IconTabFilter>
 							<IconTabFilter
                                 icon="sap-icon://add-contact"
                                 iconColor="Neutral"
