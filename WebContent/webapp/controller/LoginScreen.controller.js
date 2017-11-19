@@ -19,7 +19,7 @@ sap.ui.define([
                             var that = this;
 				            var username = this.getView().byId("iusername").getValue();
 				            var password = this.getView().byId("ipassword").getValue();
-				            var uid;
+				            var uid, LOBId, LOB;
 				            var query1 ="https://hanadbi329046trial.hanatrial.ondemand.com/EventsSpyUI/services/Login.xsjs?acmd=validate";
                             
             			    $.ajax({
@@ -33,24 +33,26 @@ sap.ui.define([
             					async: false,
             					success: function(oData) {
             					    var data = $.parseJSON(oData);   
-            						console.log("response for authenticate user : ");
-            						console.log(data);
+            				// 		console.log("response for authenticate user : ");
+            				// 		console.log(data);
             						if(data.results.length !== 0){
             						    uid = data.results[0].UserId;
+            						    LOBId = data.results[0].LOBId;
+            						    LOB = data.results[0].LOB;
             						    oRouter.navTo("homeScreen");
             						}
             					}
             				});
             				var userData = {
                 					username: username,
-                					uid: uid
+                					uid: uid,
+                					LOBId: LOBId,
+                					LOB: LOB
                 				};
-                			console.log("userData");
+                			console.log("loggedInUserData:");
                             console.log(userData);
             				oModelLogin.setData(userData);
             				sap.ui.getCore().setModel(oModelLogin, "loggedInUserData");
-			                
-			                
                         }
 					});
 });

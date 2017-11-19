@@ -117,7 +117,7 @@
 											</cells>
 											<cells>
 												<HBox>
-													<Button icon="sap-icon://delete"  iconColor="Critical"/>
+													<Button icon="sap-icon://delete"  iconColor="Critical" press="onClickDeleteEvent"/>
 												</HBox>
 											</cells>
 										</ColumnListItem>
@@ -135,7 +135,7 @@
                                 iconColor="Neutral"
                                 text="Event Invites"
                                 key="Invites">
-                                <Table id="eventInvitesTableId" items="{
+								<Table id="eventInvitesTableId" items="{
                                                                    path:'EventInvitesModel>/results'
                                                                    }">
 									<headerToolbar>
@@ -188,14 +188,14 @@
 											</cells>
 											<cells>
 												<HBox>
-													<Button icon="sap-icon://accept"  iconColor="Positive"/>
-													<Button icon="sap-icon://decline"  iconColor="Negative"/>
+													<Button icon="sap-icon://accept"  iconColor="Positive" press="onAcceptClick"/>
+													<Button icon="sap-icon://decline"  iconColor="Negative" press="onRejectClick"/>
 												</HBox>
 											</cells>
 										</ColumnListItem>
 									</items>
 								</Table>
-                            </IconTabFilter>
+							</IconTabFilter>
 						</items>
 					</IconTabBar>
 				</content>

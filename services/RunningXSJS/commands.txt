@@ -7,3 +7,13 @@ MyEvents:
 https://hanadbi329046trial.hanatrial.ondemand.com/EventsSpyUI/services/MyEvents.xsjs?acmd=listMyEvents&userid=1
 
 https://hanadbi329046trial.hanatrial.ondemand.com/EventsSpyUI/services/MyEvents.xsjs?acmd=listLOB
+
+https://hanadbi329046trial.hanatrial.ondemand.com/EventsSpyUI/services/MyEvents.xsjs?acmd=createEvent&userid=1&title=ab&description=afds&lobId=1&capacity=10
+
+EventInvites:
+
+https://hanadbi329046trial.hanatrial.ondemand.com/EventsSpyUI/services/EventInvites.xsjs?acmd=listMyEventsInvites&LOBId=1
+
+https://hanadbi329046trial.hanatrial.ondemand.com/EventsSpyUI/services/MyEvents.xsjs?acmd=deleteEvent&eventId=9&userid=1
+
+https://hanadbi329046trial.hanatrial.ondemand.com/EventsSpyUI/services/EventInvites.xsjs?acmd=acceptEventInvite&eventId=14&userid=1
